@@ -1,0 +1,24 @@
+#!/bin/bash
+
+. xunit.d/colors.sh
+. xunit.d/basic-asserts.sh
+. xunit.d/assertions.sh
+. xunit.d/tests.sh
+. xunit.d/test-file.sh
+. xunit.d/test-dir.sh
+
+if [[ $# = "1" ]]
+then
+	if [ -f $1 ]
+	then
+		testFile $1
+		printResults
+	else
+		if [ -d $1 ]
+		then
+			testDir $1
+		else
+			printColorized red "No tests found"
+		fi
+	fi
+fi

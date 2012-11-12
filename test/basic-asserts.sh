@@ -10,6 +10,6 @@ function testEquals {
 }
 
 function testGreaterThan {
-	assertGreaterThan 1 2
-	assertGreaterThan 1 5
+	assertGreaterThan 3 2
+	assertGreaterThan 5 1
 }

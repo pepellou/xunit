@@ -10,7 +10,7 @@ function assertEquals {
 }
 
 function assertGreaterThan {
-	if [ "$2" -gt "$1" ]
+	if [ "$1" -gt "$2" ]
 	then
 		pass
 	else

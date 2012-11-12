@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function setUp {
-	theCommand='src/scan.sh';
+	echo "This is a sample setup"
 }
 
 function testEquals {

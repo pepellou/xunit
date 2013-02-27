@@ -1,9 +1,5 @@
 #!/bin/bash
 
-function setUp {
-	echo "This is a sample setup"
-}
-
 function testEquals {
 	assertEquals 2 2
 	assertEquals "a" "a"

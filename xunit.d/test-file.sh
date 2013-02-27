@@ -4,7 +4,7 @@ function testFile {
 	. $1
 	while read testFunction
 	do
-		setUp
+		setUp 2> /dev/null
 		doTest $testFunction
 	done < <(grep 'function test' $1 | awk '{ print $2 }')
 }

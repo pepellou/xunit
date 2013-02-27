@@ -1,5 +1,8 @@
 #!bin/bash
 
 function testDir {
-	ls -l $1 | awk '{ print $8 }' | grep ".sh$"
+	while read file
+	do
+		testFile $1/$file
+	done < <(ls -l $1 | awk '{ print $NF }' | grep ".sh$")
 }

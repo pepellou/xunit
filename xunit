@@ -17,6 +17,7 @@ then
 		if [ -d $1 ]
 		then
 			testDir $1
+			printResults
 		else
 			printColorized red "No tests found"
 		fi

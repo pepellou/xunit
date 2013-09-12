@@ -9,6 +9,15 @@ function assertEquals {
 	fi
 }
 
+function assertNotEquals {
+	if [ "$1" == "$2" ]
+	then
+		fail "$current_test: expected NOT to be '$1' but found '$2'"
+	else
+		pass
+	fi
+}
+
 function assertGreaterThan {
 	if [ "$1" -gt "$2" ]
 	then

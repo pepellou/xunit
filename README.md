@@ -1,4 +1,4 @@
 xunit.d
 =======
 
-Bash unit testing framework.
+Bash unit testing framework

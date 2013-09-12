@@ -45,3 +45,12 @@ function assertMatches {
 	fi
 }
 
+function assertNotMatches {
+	if [[ "$2" =~ $1 ]]
+	then
+		fail "$current_test: expect '$2' to NOT match regular expression '$1'"
+	else
+		pass
+	fi
+}
+

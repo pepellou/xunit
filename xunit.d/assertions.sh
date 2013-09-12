@@ -13,6 +13,7 @@ function pass {
 
 function fail {
 	countAssert
+	echo -n "   "
 	printColorized red "$1"
 	error="yes"
 	failedAsserts=`expr $failedAsserts + 1`

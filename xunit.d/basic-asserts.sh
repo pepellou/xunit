@@ -54,3 +54,11 @@ function assertNotMatches {
 	fi
 }
 
+function assertFileContains {
+	if [[ `grep "$2" $1` = "" ]]
+	then
+		fail "$current_test: expect '$1' to contain '$2'"
+	else
+		pass
+	fi
+}

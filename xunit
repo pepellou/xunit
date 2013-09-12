@@ -1,11 +1,13 @@
 #!/bin/bash
 
-. xunit.d/colors.sh
-. xunit.d/basic-asserts.sh
-. xunit.d/assertions.sh
-. xunit.d/tests.sh
-. xunit.d/test-file.sh
-. xunit.d/test-dir.sh
+scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+. $scriptDir/xunit.d/colors.sh
+. $scriptDir/xunit.d/basic-asserts.sh
+. $scriptDir/xunit.d/assertions.sh
+. $scriptDir/xunit.d/tests.sh
+. $scriptDir/xunit.d/test-file.sh
+. $scriptDir/xunit.d/test-dir.sh
 
 if [[ $# = "1" ]]
 then

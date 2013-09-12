@@ -14,6 +14,7 @@ if [[ $# = "1" ]]
 then
 	if [ -f $1 ]
 	then
+		printColorized yellow "$1:"
 		testFile $1
 		printResults
 	else

@@ -2,20 +2,38 @@
 
 function testFile {
 	. $1
-	while read testFunction
+	while read lineAndFunc
 	do
-		setUp 2> /dev/null
-		doTest $testFunction
-	done < <(grep 'function test' $1 | awk '{ print $2 }')
+		numLine=$( echo $lineAndFunc | awk '{ print $1 }' | awk 'BEGIN {FS=":"} { print $1 }' )
+		testFunction=$( echo $lineAndFunc | awk '{ print $2 }' )
+		previousLine=$( head -n $numLine $1 | tail -n 2 | head -n 1 )
+		[ "$( type -t $testFunction )" == "function" ] && {
+			[ "$( echo $previousLine | grep "^# @dataProvider " )" == "" ] && {
+				setUp 2> /dev/null
+				doTest $testFunction
+				tearDown 2> /dev/null
+			} || {
+				currentTest=$testFunction
+				$( echo $previousLine | awk '{print $3}' )
+			}
+		}
+	done < <(grep -n 'function test' $1)
+}
+
+function data {
+	setUp 2> /dev/null
+	doTest $currentTest $@
+	tearDown 2> /dev/null
 }
 
 function doTest {
 	countTest
 	current_test=$1
 	error="no"
-	$1
+	$@
 	if [ "$error" = "no" ]
 	then
+		echo -n "   "
 		printColorized green "$current_test passes"
 	fi
 }

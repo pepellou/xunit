@@ -27,6 +27,15 @@ function assertGreaterThan {
 	fi
 }
 
+function assertNotGreaterThan {
+	if [ "$1" -gt "$2" ]
+	then
+		fail "$current_test: expect '$2' to NOT be greater than '$1'"
+	else
+		pass
+	fi
+}
+
 function assertMatches {
 	if [[ "$2" =~ $1 ]]
 	then
